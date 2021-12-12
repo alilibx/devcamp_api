@@ -1,13 +1,14 @@
 const NodeGeocoder = require('node-geocoder');
 
+//Change to ENV Variables
 const options = {
-  provider: process.env.GEOCODER_PROVIDER,
+  provider: 'mapquest',
   httpAdapter: 'https',
-  apiKey: process.env.GEOCODER_API_KEY,
+  apiKey: '6VOdpZZAlLkwLR10TMJpGxTjoNpAtCdB',
   formatter: null
 };
 
-console.log(process.env.GEOCODER_API_KEY);
+//console.log(options);
 const geocoder = NodeGeocoder(options);
 
 module.exports = geocoder;
