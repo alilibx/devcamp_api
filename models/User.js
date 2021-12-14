@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const UserSchema = mongoose.Schema({
   name: {
@@ -32,5 +33,8 @@ const UserSchema = mongoose.Schema({
     default: Date.now,
   },
 });
+
+//Encrypt password using Bcrypt
+
 
 module.exports = mongoose.model('User', UserSchema);
