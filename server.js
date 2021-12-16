@@ -70,11 +70,11 @@ app.use(limiter);
 // Set Static Folder
 // app.use(express.static(path.join(__dirname, 'public')));
 
-//Swagger Options
+//Swagger Options 
 const options = {
   customCss: '.swagger-ui .topbar { display: none }',
-  customSiteTitle: 'DevCamper API Documentation',
-  customfavIcon: '/assets/favicon.ico',
+  customSiteTitle: "DevCamper API Documentation",
+  customfavIcon: "/assets/favicon.ico"
 };
 
 //Mount routers
@@ -84,7 +84,9 @@ app.use('/api/v1/auth', auth);
 app.use('/api/v1/users', users);
 app.use('/api/v1/reviews', reviews);
 //Documentation Route
-app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerConfig, options));
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerConfig,options));
+
+
 
 app.use(errorHandler);
 
