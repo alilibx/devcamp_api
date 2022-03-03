@@ -5,52 +5,53 @@ const User = require('../models/User');
 
 //Protect Routes
 exports.protect = asyncHandler(async (req, res, next) => {
-  let token;
-  if (
-    req.headers.authorization &&
+	let token;
+	if (
+		req.headers.authorization &&
     req.headers.authorization.startsWith('Bearer')
-  ) {
-    //Set Token from Barer token in Header
-    token = req.headers.authorization.split(' ')[1];
-  } //Set Token from Cookie
-    // else if (req.cookies.token) {
-    //   token = req.cookies.token;
-    // }
+	) {
+		//Set Token from Barer token in Header
+		token = req.headers.authorization.split(' ')[1];
+	} //Set Token from Cookie
+	// else if (req.cookies.token) {
+	//   token = req.cookies.token;
+	// }
 
-  //Make sure token exists
-  if (!token) {
-    return next(
-      new ErrorResponse('Not Authorized to access this resource!', 401)
-    );
-  }
+	//Make sure token exists
+	if (!token) {
+		return next(
+			new ErrorResponse('Not Authorized to access this resource!', 401)
+		);
+	}
 
-  try {
-    //Verify Token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+	try {
+		//Verify Token
+		// eslint-disable-next-line no-undef
+		const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    //console.log(decoded);
+		//console.log(decoded);
 
-    req.user = await User.findById(decoded.id);
+		req.user = await User.findById(decoded.id);
 
-    next();
-  } catch (err) {
-    return next(
-      new ErrorResponse('Not Authorized to access this resource!', 401)
-    );
-  }
+		next();
+	} catch (err) {
+		return next(
+			new ErrorResponse('Not Authorized to access this resource!', 401)
+		);
+	}
 });
 
 //Grant Access to specific roles
 exports.authorize = (...roles) => {
-  return (req, res, next) => {
-    if (!roles.includes(req.user.role)) {
-      return next(
-        new ErrorResponse(
-          `User role ${req.user.role} is unauthorized to perform this action`,
-          403
-        )
-      );
-    }
-    next();
-  };
+	return (req, res, next) => {
+		if (!roles.includes(req.user.role)) {
+			return next(
+				new ErrorResponse(
+					`User role ${req.user.role} is unauthorized to perform this action`,
+					403
+				)
+			);
+		}
+		next();
+	};
 };

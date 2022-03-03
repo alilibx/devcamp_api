@@ -1,0 +1,28 @@
+[
+  {
+    "applicationStatusCode": 0,
+    "applicationStatusResponse": "Branch Counter fetched Successfully",
+    "branchId": 173,
+    "branchName": "Dubai Branch",
+    "branchNameArabic": "فرع دبي",
+    "emailAddress": "dubai@penstash.net",
+    "counterList": [
+      { "counterId": 175, "counterNumber": "001", "setup": true },
+      { "counterId": 176, "counterNumber": "002", "setup": true },
+      { "counterId": 177, "counterNumber": "003", "setup": true },
+      { "counterId": 178, "counterNumber": "004", "setup": true }
+    ]
+  },
+  {
+    "applicationStatusCode": 0,
+    "applicationStatusResponse": "Branch Counter fetched Successfully",
+    "branchId": 174,
+    "branchName": "Omdurman Branch",
+    "branchNameArabic": "فرع امدرمان",
+    "emailAddress": "omd@penstash.net",
+    "counterList": [
+      { "counterId": 179, "counterNumber": "001", "setup": true },
+      { "counterId": 180, "counterNumber": "002", "setup": true }
+    ]
+  }
+]
